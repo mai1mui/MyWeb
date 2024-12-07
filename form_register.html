@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dang_ky_thanh_vien.css">
+    <title>Đăng ký thành viên</title>
+    <script>
+        function kiemtra(){
+
+            //1.id
+            var sId=document.getElementById("txtId").value;
+            var reId=/^[A-Za-z0-9]{3,}$/;
+            if(reId.test(sId)==false){
+                alert("Invalid Id!");
+                document.getElementById("txtId").focus();
+                return false;
+            }
+
+            //1.username
+            var sUser=document.getElementById("txtUser").value;
+            var reUser=/^[A-Za-z0-9]{3,}$/;
+            if(reUser.test(sUser)==false){
+                alert("Invalid Username!");
+                document.getElementById("txtUser").focus();
+                return false;
+            }
+
+            //1.fullname
+            var sName=document.getElementById("txtName").value;
+            var reName=/^[A-Za-z ]{3,}$/;
+            if(reName.test(sName)==false){
+                alert("Invalid Fullname!");
+                document.getElementById("txtName").focus();
+                return false;
+            }
+
+            //1.firstname
+            var sFirst=document.getElementById("txtFirst").value;
+            var reFirst=/^[A-Za-z ]{2,}$/;
+            if(reFirst.test(sFirst)==false){
+                alert("Invalid Firstname!");
+                document.getElementById("txtFirst").focus();
+                return false;
+            }
+
+            //1.lastname
+            var sLast=document.getElementById("txtLast").value;
+            var reLast=/^[A-Za-z ]{3,}$/;
+            if(reLast.test(sLast)==false){
+                alert("Invalid Lastname!");
+                document.getElementById("txtLast").focus();
+                return false;
+            }
+
+            //2.mail
+            var sMail=document.getElementById("txtMail").value;
+            var reMail=/^[A-Za-z0-9\._%]{2,}[@][A-Za-z]{2,}[.][A-Za-z]{2,}([.][A-Za-z]{2,})?$/;
+            if(reMail.test(sMail)==false){
+                alert("Invalid Email!");
+                document.getElementById("txtMail").focus();
+                return false;
+            }
+
+            //password
+            //pwd không để trống
+            var sPwd=document.getElementById("pwd").value;
+            if((sPwd.length==0)){
+                alert("Password field can't left blank!");
+                document.getElementById("pwd").focus();
+                return false;
+            }
+
+            //qui tắc đặt mật khẩu
+            var sPwd=document.getElementById("pwd").value;
+            var rePwd=/^[A-Za-z0-9@#$%&]{8,}$/;
+            if(rePwd.test(sPwd)==false){
+                alert("Password must be at least 8 characters including letters, numbers, special characters (@,#,$,%,&)");
+                document.getElementById("pwd").focus();
+                return false;
+            }
+
+            //rpwd không để trống
+            var sRpwd=document.getElementById("rpwd").value;
+            if(sRpwd.length==0){
+                alert("Confirmed password field can't left blank!");
+                document.getElementById("rpwd").focus();
+                return false;
+            }
+
+            //pwd phải trùng rpwd
+            if(sPwd!=sRpwd){
+                alert("Passwords do not match!");
+                return false;
+            }
+
+            //pwd không trùng user
+            if(sPwd==sUser){
+                alert("Password cannot be the same as username!");
+                return false;
+            }
+
+            //pwd không trùng id
+            if(sPwd==sId){
+                alert("Password cannot be the same as ID!");
+                return false;
+            }
+
+            //3.phone
+            var sPhone=document.getElementById("txtPhone").value;
+            var rePhone=/^0[0-9]{9,12}$/;
+            if(rePhone.test(sPhone)==false){
+                alert("Invalid Phone!");
+                document.getElementById("txtPhone").focus();
+                return false;
+            }
+
+            //3.Mobile
+            var sMobile=document.getElementById("txtMobile").value;
+            var reMobile=/^0[0-9]{9,12}$/;
+            if(reMobile.test(sMobile)==false){
+                alert("Invalid Mobile!");
+                document.getElementById("txtMobile").focus();
+                return false;
+            }
+
+            //3.fax
+            var sFax=document.getElementById("txtFax").value;
+            var reFax=/^[0-9]{9,12}$/;
+            if(reFax.test(sFax)==false){
+                alert("Invalid Fax!");
+                document.getElementById("txtFax").focus();
+                return false;
+            }
+
+            //4.address
+            var sAddress=document.getElementById("txtAddress").value;
+            if(sAddress.length==0){
+                alert("Addressfield can't left blank!");
+                document.getElementById("txtAddress").focus();
+                return false;
+            }
+
+            // Tổng hợp thông tin
+            var data = "Registed Infomation";
+                data += "\n-------------------";
+                data += "\nFirst name: " + sFirst;
+                data += "\nLast name: " + sLast;
+                data += "\nFull name: " + sName;
+                data += "\nUser name: " + sUser;
+                data += "\nID: " + sId;
+                data += "\nGender: " + document.querySelector('input[name="sex"]:checked').value;
+                data += "\nDate Of Birth: "+document.getElementById('txtBirth').value;
+                data += "\nAddress: "+document.getElementById('txtAddress').value;
+                data += "\nMail: " + sMail;
+                data += "\nMobile: " + sMobile;
+                data += "\nPhone: " + sPhone;
+                data += "\nFax: " + sFax;
+                data += "\nCountry: " + document.getElementById('txtCountry').value;
+            alert(data); 
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="tieude" style="font-family: 'roboto',sans-serif; font-weight: 300;font-style: italic;">
+            <h3>Narra_Bes Jewels "Mỗi món trang sức là một thông điệp yêu thương."</h3> 
+        </div>
+        <div class="Nav">
+            <a href="Trangchu.html">TRANG CHỦ</a>
+           <a href="Gioithieu.html">GIỚI THIỆU</a>
+           <a href="trangsuc.html">TRANG SỨC</a>
+           <a href="bosuutap.html">BỘ SƯU TẬP</a>
+           <a href="quatang.html">QUÀ TẶNG</a>
+           <a href="dangky.html">ĐĂNG KÝ</a>
+           <a href="dangnhap.html">ĐĂNG NHẬP</a>
+        </div>
+    <!--***********************************************************************-->
+    <section>
+        <center>
+            <h1 style="text-align: center;">ĐĂNG KÝ THÀNH VIÊN</h1>
+            <form action="javascript:void(0);" onsubmit="return kiemtra();">
+                <table>
+
+                    <!--id-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">ID:</td>
+                        <td><input type="text" class="form-group" id="txtId" placeholder="Enter id" autofocus></td>
+                    </tr>
+
+                    <!--Username-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Username:</td>
+                        <td><input type="text" class="form-group" id="txtUser" placeholder="Enter username" autofocus></td>
+                    </tr>
+
+                    <!--Fullname-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Fullname:</td>
+                        <td><input type="text" class="form-group" id="txtName" placeholder="Enter fullname" autofocus></td>
+                    </tr>
+
+                    <!--Firstname-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Firstname:</td>
+                        <td><input type="text" class="form-group" id="txtFirst" placeholder="Enter firstname"></td>
+                    </tr>
+
+                    <!--Lastname-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Lastname:</td>
+                        <td><input type="text" class="form-group" id="txtLast" placeholder="Enter lastname"></td>
+                    </tr>
+
+                    <!--Gender-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Gender:</td>
+                        <td>
+                            <input type="radio" name="sex" value="Male" checked>Male
+                            <input type="radio" name="sex" value="Female">Female
+                            <input type="radio" name="sex" value="Other">Other
+                        </td>
+                    </tr>
+
+                    <!--Date-0f-birth-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Date-of-birth:</td>
+                        <td><input type="date" style="padding: 10px;" id="txtBirth"></td>
+                    </tr>
+
+                    <!--Mail-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Email:</td>
+                        <td><input type="email" class="form-group" id="txtMail" placeholder="Enter email"></td>
+                    </tr>
+
+                    <!--password-->
+                    <tr>
+                        <td align="right" style="padding: 15px;" for="pwd">Password:</td>
+                        <td><input type="password" class="form-group" id="pwd" name="pwd"  placeholder="Enter password"></td>
+                    </tr>
+
+                    <!--nhap lai password-->
+                    <tr>
+                        <td align="right" style="padding: 15px;" for="rpwd">Confirmed Password:</td>
+                        <td><input type="password" class="form-group" id="rpwd" name="rpwd" placeholder="Enter confirmed password"></td>
+                    </tr>
+
+                    <!--Mobile-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Mobile:</td>
+                        <td><input type="tel" class="form-group" id="txtMobile" placeholder="Enter mobile"></td>
+                    </tr>
+
+                    <!--Phone-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Phone:</td>
+                        <td><input type="tel" class="form-group" id="txtPhone" placeholder="Enter phone"></td>
+                    </tr>
+
+                    <!--Fax-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Fax:</td>
+                        <td><input type="tel" class="form-group" id="txtFax" placeholder="Enter fax"></td>
+                    </tr>
+
+                    <!--country-->
+                    <tr>
+                        <td align="right" style="width: 100; padding: 15px;">Country:</td>
+                        <td><select name="" id="txtCountry" style="padding: 10px;">
+                            <!--bắt lỗi country bằng cách bắt trường trống giống name cú pháp cũ
+                            <option value ="">Choose your country:</option>
+                            -->
+                            <option value="VietNam">VietNam</option>
+                            <option value="Laos">Laos</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="India">India</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Cambodia">Cambodia</option>
+                            <option value="America">America</option>
+                            <option value="Korea">Korea</option>
+                            <option value="Japan">Japan</option>
+                        </select></td>
+                    </tr>
+
+                    <!--Address-->
+                    <tr>
+                        <td align="right" style="padding: 15px;">Address:</td>
+                        <td><input type="text" class="form-group" id="txtAddress" placeholder="Enter address"></td>
+                    </tr>
+
+                    <!--tôi đống ý với điều khoản chính sách.......-->
+                    <tr style=" margin-top: 10px;">
+                        <td><input type="checkbox" class="form-group" id="terms" name="terms" required></td>
+                        <td><label for="terms">Tôi đồng ý với <a href="####" target="_blank">Chính sách và Điều khoản</a></label></td>
+                    </tr>
+
+                    <!--Button-->
+                    <tr>
+                        <td align="right" style="padding: 15px;"></td>
+                        <td>
+                            <button   type="submit" value="Register" class="btn">Submit</button>
+                            <button   type="reset" value="Reset" class="btn">Reset</button>
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+        </center>
+    </section>
+    <!--***********************************************************************-->  
+    <footer>
+    &copy;By Me.All right reversed   
+    </footer>
+</body>
+</html>
